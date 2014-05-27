@@ -1,0 +1,4 @@
+salt
+====
+
+Salt configuration
