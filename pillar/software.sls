@@ -1,0 +1,11 @@
+software:
+  - edubuntu-artwork
+  - edubuntu-desktop
+  - edubuntu-docs
+  - edubuntu-fonts
+  - edubuntu-menueditor
+  - edubuntu-wallpapers
+  - ubuntu-edu-preschool
+  - ubuntu-edu-primary
+  - ubuntu-edu-secondary
+  - ubuntu-edu-tertiary
