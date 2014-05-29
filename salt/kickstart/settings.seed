@@ -1,0 +1,6 @@
+d-i apt-setup/services-select multiselect security
+d-i apt-setup/security_host string server-scuola
+d-i apt-setup/security_path string /security
+d-i apt-setup/services-select multiselect saltstack
+d-i apt-setup/saltstack_host string server-scuola
+d-i apt-setup/saltstack_path string /saltstack
