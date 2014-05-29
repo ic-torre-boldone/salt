@@ -6,3 +6,5 @@ base:
   'server-scuola-salt':
     - dnsmasq
     - tmux
+    - apache
+    - kickstart
