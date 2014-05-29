@@ -1,6 +1,6 @@
 base:
   '* and not server-scuola-salt':
-    - app_settings
+    - lightdm
     - software
     - users
   'server-scuola-salt':

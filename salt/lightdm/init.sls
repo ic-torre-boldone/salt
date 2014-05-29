@@ -1,15 +1,16 @@
-/etc/lightdm/lightdm.conf.d/ic_torre_boldone.conf:
-  file:
-    - managed
-    - source: salt://app_settings/lightdm.conf
+lightdm_custom_conf_file:
+  file.managed:
+    - source: salt://lightdm/lightdm.conf
+    - name: /etc/lightdm/lightdm.conf.d/ic_torre_boldone.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - file.directory: /etc/lightdm/lightdm.conf.d/
+      - file.directory: lightdm_custom_conf_dir
 
-/etc/lightdm/lightdm.conf.d/:
+lightdm_custom_conf_dir:
   file.directory:
+    - name: /etc/lightdm/lightdm.conf.d/
     - user: root
     - group: root
     - mode: 644
@@ -24,7 +25,7 @@ lightdm:
     - running
     - enable: True
     - watch:
-      - file: /etc/lightdm/lightdm.conf.d/ic_torre_boldone.conf
+      - file: lightdm_custom_conf_file
     - require:
       - pkg: lightdm
 
