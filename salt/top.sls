@@ -1,9 +1,9 @@
 base:
-  '* and not server-scuola-salt':
+  'lab*':
     - lightdm
     - software
     - users
-  'server-scuola-salt':
+  'server-scuola':
     - dnsmasq
     - tmux
     - apache
