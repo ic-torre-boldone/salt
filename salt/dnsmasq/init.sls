@@ -16,8 +16,8 @@ ftpd_directory:
 copy_ubuntu_netboot:
   module.run:
     - name: cp.get_dir
-    - path: salt://dnsmasq/ubuntu_netboot/
-    - dest: /var/ftpd/ubuntu14
+    - path: salt://dnsmasq/ubuntu14/
+    - dest: /var/ftpd/
     - require:
       - file.directory: ftpd_directory
 
@@ -34,7 +34,7 @@ dnsmasq_conf:
 grub_netboot_i386_cfg:
   file.managed:
     - source: salt://dnsmasq/grub_netboot_i386.cfg
-    - name: /var/ftpd/ubuntu14/ubuntu_netboot/ubuntu-installer/i386/boot-screens/txt.cfg
+    - name: /var/ftpd/ubuntu14/ubuntu-installer/i386/boot-screens/txt.cfg
     - user: root
     - group: root
     - mode: 644
