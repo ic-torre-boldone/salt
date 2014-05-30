@@ -30,6 +30,17 @@ copy_ubuntu_netboot:
     - require:
       - pkg: dnsmasq
 
+grub_netboot_i386_cfg:
+  file.managed:
+    - source: salt://dnsmasq/grub_netboot_i386.cfg
+    - name: /var/ftpd/ubuntu14/ubuntu_netboot/ubuntu-installer/i386/boot-screens/txt.cfg
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - require:
+      - module.run: copy_ubuntu_netboot
+
 dnsmasq:
   pkg:
     - installed
@@ -41,4 +52,5 @@ dnsmasq:
     - require:
       - pkg: dnsmasq
       - module.run: copy_ubuntu_netboot
+      - file: grub_netboot_i386_cfg
 
