@@ -3,8 +3,9 @@
 # * dhcp server
 # * tftp server
 
-/var/ftpd:
+ftpd_directory:
   file.directory:
+    - name: /var/ftpd
     - user: root
     - group: root
     - mode: 755
@@ -18,11 +19,11 @@ copy_ubuntu_netboot:
     - path: salt://dnsmasq/ubuntu_netboot/
     - dest: /var/ftpd/ubuntu14
     - require:
-      - file.directory: /var/ftpd
+      - file.directory: ftpd_directory
 
-/etc/dnsmasq.conf:
-  file:
-    - managed
+dnsmasq_conf:
+  file.managed:
+    - name: /etc/dnsmasq.conf
     - source: salt://dnsmasq/dnsmasq.conf
     - user: root
     - group: root
@@ -48,7 +49,7 @@ dnsmasq:
     - running
     - enable: True
     - watch:
-      - file: /etc/dnsmasq.conf
+      - file: dnsmasq_conf
     - require:
       - pkg: dnsmasq
       - module.run: copy_ubuntu_netboot
