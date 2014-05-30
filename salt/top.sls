@@ -3,7 +3,8 @@ base:
     - lightdm
     - software
     - users
-  'server-scuola':
+  'server-scuola*':
+    - apt-mirror
     - dnsmasq
     - tmux
     - apache

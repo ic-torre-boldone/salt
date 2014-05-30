@@ -1,0 +1,55 @@
+############# config ##################
+#
+# set base_path    /var/spool/apt-mirror
+#
+# set mirror_path  $base_path/mirror
+# set skel_path    $base_path/skel
+# set var_path     $base_path/var
+# set cleanscript $var_path/clean.sh
+# set defaultarch  <running host architecture>
+# set postmirror_script $var_path/postmirror.sh
+# set run_postmirror 0
+set defaultarch  i386
+set nthreads     20
+set _tilde 0
+#
+############# end config ##############
+
+
+deb http://it.archive.ubuntu.com/ubuntu/ trusty main restricted
+deb http://it.archive.ubuntu.com/ubuntu/ trusty main/debian-installer restricted/debian-installer universe/debian-installer multiverse/debian-installer
+#deb-src http://it.archive.ubuntu.com/ubuntu/ trusty main restricted
+
+deb http://it.archive.ubuntu.com/ubuntu/ trusty-updates main restricted
+deb http://it.archive.ubuntu.com/ubuntu/ trusty-updates main/debian-installer restricted/debian-installer universe/debian-installer multiverse/debian-installer
+#deb-src http://it.archive.ubuntu.com/ubuntu/ trusty-updates main restricted
+
+deb http://it.archive.ubuntu.com/ubuntu/ trusty universe
+#deb-src http://it.archive.ubuntu.com/ubuntu/ trusty universe
+deb http://it.archive.ubuntu.com/ubuntu/ trusty-updates universe
+#deb-src http://it.archive.ubuntu.com/ubuntu/ trusty-updates universe
+
+deb http://it.archive.ubuntu.com/ubuntu/ trusty multiverse
+#deb-src http://it.archive.ubuntu.com/ubuntu/ trusty multiverse
+deb http://it.archive.ubuntu.com/ubuntu/ trusty-updates multiverse
+#deb-src http://it.archive.ubuntu.com/ubuntu/ trusty-updates multiverse
+
+deb http://it.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse
+#deb-src http://it.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu trusty-security main restricted
+#deb-src http://security.ubuntu.com/ubuntu trusty-security main restricted
+deb http://security.ubuntu.com/ubuntu trusty-security universe
+#deb-src http://security.ubuntu.com/ubuntu trusty-security universe
+deb http://security.ubuntu.com/ubuntu trusty-security multiverse
+#deb-src http://security.ubuntu.com/ubuntu trusty-security multiverse
+
+
+deb http://extras.ubuntu.com/ubuntu trusty main
+#deb-src http://extras.ubuntu.com/ubuntu trusty main
+
+deb http://ppa.launchpad.net/saltstack/salt/ubuntu trusty main
+
+clean http://it.archive.ubuntu.com/ubuntu/
+clean http://extras.ubuntu.com/ubuntu
+clean http://security.ubuntu.com/ubuntu
