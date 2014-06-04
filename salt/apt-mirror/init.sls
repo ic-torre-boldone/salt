@@ -31,5 +31,7 @@ apt-mirror:
     - name: {{pillar.get('apt_mirror_symlinks')[symlink_id]['name']}}
     - target: {{pillar.get('apt_mirror_symlinks')[symlink_id]['target']}}
     - force: True
+    - require:
+      - pkg: apache
 {% endfor %}
 
