@@ -9,3 +9,4 @@ base:
     - tmux
     - apache
     - kickstart
+    - mac2hostname
