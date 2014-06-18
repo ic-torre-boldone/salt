@@ -9,3 +9,5 @@ software:
   - ubuntu-edu-primary
   - ubuntu-edu-secondary
   - ubuntu-edu-tertiary
+  - audacity
+  - geogebra-gnome
