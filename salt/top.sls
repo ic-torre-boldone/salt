@@ -4,9 +4,11 @@ base:
     - software
     - users
   'server-scuola*':
+    - apache
     - apt-mirror
     - dnsmasq
-    - tmux
-    - apache
     - kickstart
     - mac2hostname
+    - server_private_network
+    - rebooter
+    - tmux

@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+'''
+This tool is used to reboot all the salt client that report a successful
+completition of the highstate state. The reboot command is issued only after
+the first successful report.
+
+The tool must be run as 'root' in order to access salt's master socket.
+'''
+
+# Import Python libs
+from __future__ import print_function
+import optparse
+import os
+
+# Import Salt libs
+import salt.client
+import salt.utils.event
+
+
+def parse():
+    '''
+    Parse the script command line inputs
+    '''
+    parser = optparse.OptionParser()
+
+    parser.add_option('-s',
+                      '--sock-dir',
+                      dest='sock_dir',
+                      default='/var/run/salt',
+                      help=('Staticly define the directory holding the salt '
+                            'unix sockets for communication'))
+
+    options, args = parser.parse_args()
+
+    opts = {}
+
+    for k, v in options.__dict__.items():
+        if v is not None:
+            opts[k] = v
+
+    opts['sock_dir'] = os.path.join(opts['sock_dir'], 'master')
+
+    return opts
+
+
+def listen(opts):
+    '''
+    Attach to the pub socket and grab messages
+    '''
+    event = salt.utils.event.SaltEvent('master', opts['sock_dir'])
+    print(event.puburi)
+    nodes_restarted = set()
+    local_client = salt.client.LocalClient()
+
+    while True:
+        ret = event.get_event(full=True)
+        if ret is None:
+            continue
+        data = ret['data']
+        if not data.has_key('fun') or data['fun'] != 'state.highstate':
+            continue
+        if not data.has_key('id'):
+            continue
+        if not data.has_key('retcode') or data['retcode'] != 0:
+            continue
+
+        if data['id'] not in nodes_restarted:
+            print('Triggering reboot of {0}'.format(data['id']))
+            local_client.cmd(data['id'], 'cmd.run', ['reboot'])
+            nodes_restarted.add(data['id'])
+
+if __name__ == '__main__':
+    opts = parse()
+    listen(opts)
