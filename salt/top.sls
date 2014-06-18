@@ -9,6 +9,5 @@ base:
     - dnsmasq
     - kickstart
     - mac2hostname
-    - server_private_network
     - rebooter
     - tmux
