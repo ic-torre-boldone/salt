@@ -2,6 +2,7 @@ base:
   'lab*':
     - lightdm
     - software
+    - ntpdate
     - users
   'server-scuola*':
     - apache
@@ -10,4 +11,5 @@ base:
     - kickstart
     - mac2hostname
     - rebooter
+    - ntpd
     - tmux
