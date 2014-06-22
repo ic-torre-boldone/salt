@@ -6,7 +6,7 @@ lightdm_custom_conf_file:
     - group: root
     - mode: 644
     - require:
-      - file.directory: lightdm_custom_conf_dir
+      - file: lightdm_custom_conf_dir
 
 lightdm_custom_conf_dir:
   file.directory:

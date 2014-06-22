@@ -1,7 +1,7 @@
 ntpdate_cfg:
   file.managed:
     - source: salt://ntpdate/ntpdate.conf.jinja
-    - name: /etc/defaults/ntpdate.conf
+    - name: /etc/default/ntpdate.conf
     - user: root
     - group: root
     - mode: 644
