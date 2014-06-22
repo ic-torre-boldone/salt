@@ -19,7 +19,7 @@ copy_ubuntu_netboot:
     - path: salt://dnsmasq/ubuntu14/
     - dest: /var/ftpd/
     - require:
-      - file.directory: ftpd_directory
+      - file: ftpd_directory
 
 dnsmasq_conf:
   file.managed:
@@ -40,7 +40,7 @@ grub_netboot_i386_cfg:
     - mode: 644
     - template: jinja
     - require:
-      - module.run: copy_ubuntu_netboot
+      - module: copy_ubuntu_netboot
 
 dnsmasq:
   pkg:
@@ -52,6 +52,6 @@ dnsmasq:
       - file: dnsmasq_conf
     - require:
       - pkg: dnsmasq
-      - module.run: copy_ubuntu_netboot
+      - module: copy_ubuntu_netboot
       - file: grub_netboot_i386_cfg
 

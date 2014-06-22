@@ -40,4 +40,4 @@ mac2hostname:
     - require:
         - file: mac2hostname_binary
         - file: mac2hostname_configuration
-        - file.directory: mac2hostname_db_dir
+        - file: mac2hostname_db_dir

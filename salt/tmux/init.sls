@@ -1,9 +1,9 @@
-tmux_configuration_for_admin_user:
+tmux_configuration_for_amministratore_user:
   file.managed:
-    - name: /home/admin/.tmux.conf
+    - name: /home/amministratore/.tmux.conf
     - source: salt://tmux/tmux.conf
-    - user: admin
-    - group: admin
+    - user: amministratore
+    - group: amministratore
     - mode: 644
 
 tmux:
