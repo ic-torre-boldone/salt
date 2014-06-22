@@ -1,7 +1,7 @@
 kickstart_config:
   file.managed:
     - name: /var/www/html/ks.cfg
-    - source: salt://kickstart/ks.cfg
+    - source: salt://kickstart/ks.cfg.jinja
     - template: jinja
     - user: root
     - group: root
@@ -11,7 +11,7 @@ kickstart_config:
 
 kickstart_preseeded_data:
   file.managed:
-    - source: salt://kickstart/settings.seed
+    - source: salt://kickstart/settings.seed.jinja
     - name: /var/www/html/settings.seed
     - template: jinja
     - user: root
