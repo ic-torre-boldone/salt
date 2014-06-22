@@ -20,3 +20,13 @@ kickstart_preseeded_data:
     - require:
       - pkg: apache
 
+saltstack_repo_key:
+  file.managed:
+    - source: salt://kickstart/saltstack.key
+    - name: /var/www/html/saltstack.key
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pkg: apache
+

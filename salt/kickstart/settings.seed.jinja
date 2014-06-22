@@ -1,6 +1,8 @@
 d-i apt-setup/services-select multiselect security
 d-i apt-setup/security_host string {{salt['grains.get']('localhost', 'ERROR')}}
 d-i apt-setup/security_path string /security
-d-i apt-setup/services-select multiselect saltstack
-d-i apt-setup/saltstack_host string {{salt['grains.get']('localhost', 'ERROR')}}
-d-i apt-setup/saltstack_path string /saltstack
+
+d-i apt-setup/local0/repository string \
+    http://{{salt['grains.get']('localhost', 'ERROR')}}/saltstack trusty main
+d-i apt-setup/local0/comment string Saltstack packages
+d-i apt-setup/local0/key string http://{{salt['grains.get']('localhost', 'ERROR')}}/saltstack.key

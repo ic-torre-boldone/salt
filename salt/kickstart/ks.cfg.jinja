@@ -41,7 +41,7 @@ firewall --disabled
 #Do not configure the X Window System
 skipx
 #Services
-services --enabled openssh,salt-minion
+services --enabled=openssh,salt-minion
 
 #Package selection
 %packages
@@ -51,7 +51,6 @@ vim
 
 #Post installation commands
 %post --nochroot
-mkdir /mnt/sysimage/etc/salt
 echo "master: {{salt['grains.get']('localhost', 'ERROR')}}" >> /target/etc/salt/minion
 echo "state_events: True" >> /target/etc/salt/minion
 wget http://{{salt['grains.get']('localhost', 'ERROR')}}:3000/mac2hostname\?mac\=`ip link | grep ether | sed -e "s/^ *//" | cut -d " " -f 2 | sed -e "s/:/_/g"` -O /target/etc/hostname
