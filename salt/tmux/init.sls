@@ -5,6 +5,8 @@ tmux_configuration_for_amministratore_user:
     - user: amministratore
     - group: amministratore
     - mode: 644
+    - require:
+      - user: amministratore
 
 tmux:
   pkg:

@@ -8,8 +8,10 @@ base:
     - apache
     - apt-mirror
     - dnsmasq
+    - final_touch
     - kickstart
     - mac2hostname
-    - final_touch
     - ntpd
+    - sshd
     - tmux
+    - users
