@@ -1,7 +1,7 @@
-rebooter_script:
+final_touch_script:
   file.managed:
-    - source: salt://rebooter/rebooter.py
-    - name: /usr/bin/rebooter
+    - source: salt://final_touch/final_touch
+    - name: /usr/bin/final_touch
     - user: root
     - group: root
     - mode: 755
