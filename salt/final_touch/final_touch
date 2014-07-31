@@ -13,6 +13,7 @@ The tool must be run as 'root' in order to access salt's master socket.
 from __future__ import print_function
 import optparse
 import os
+import sys
 
 # Import Salt libs
 import salt.client
@@ -31,6 +32,12 @@ def parse():
                       default='/var/run/salt',
                       help=('Staticly define the directory holding the salt '
                             'unix sockets for communication'))
+    parser.add_option('-c',
+                      '--command',
+                      dest='command',
+                      default='poweroff',
+                      help=('Command to run once the minion reports the '
+                            'highstate state has been successfully reached'))
 
     options, args = parser.parse_args()
 
@@ -67,10 +74,14 @@ def listen(opts):
             continue
 
         if data['id'] not in nodes_restarted:
-            print('Triggering reboot of {0}'.format(data['id']))
-            local_client.cmd(data['id'], 'cmd.run', ['reboot'])
+            print('Executing {0} on {1}'.format(opts['command'], data['id']))
+            local_client.cmd(data['id'], 'cmd.run', [opts['command']])
             nodes_restarted.add(data['id'])
 
 if __name__ == '__main__':
     opts = parse()
+
+    if os.getuid() != 0:
+        print("This program must be run as root")
+        sys.exit(1)
     listen(opts)

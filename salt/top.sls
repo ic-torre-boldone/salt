@@ -10,6 +10,6 @@ base:
     - dnsmasq
     - kickstart
     - mac2hostname
-    - rebooter
+    - final_touch
     - ntpd
     - tmux
