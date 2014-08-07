@@ -12,6 +12,8 @@ studente:
     - enforce_password: True
 {% endif %}
 
+# La password di amministratore e' 'amministratore'.
+
 amministratore:
   user.present:
     - shell: /bin/bash
@@ -19,4 +21,6 @@ amministratore:
     - createhome: True
     - password: $6$RK8fyJaWuvVz4IR$vpimlxRQNN5drtXRPiS05typvv9cTWUdFThaMdYo7UL1Xuyp2qA8zLwVbLjJEfVuLmZIu.Geg4tz9HJnIliY71
     - enforce_password: True
+    - groups:
+      - admin
 
