@@ -15,3 +15,4 @@ base:
     - sshd
     - tmux
     - users
+    - groups
