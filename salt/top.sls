@@ -4,6 +4,7 @@ base:
     - software
     - ntpdate
     - users
+    - groups
   'server-scuola*':
     - apache
     - apt-mirror

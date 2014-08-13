@@ -2,7 +2,7 @@
 
 # La password di studente e' 'studente'.
 
-{% if not 'server-scuola' in salt['grains.get']('master', '') %}
+{% if 'server-scuola' in salt['grains.get']('master', '') %}
 studente:
   user.present:
     - shell: /bin/bash
