@@ -1,0 +1,7 @@
+[SeatDefaults]
+{% if 'lab' in salt['grains.get']('host', '') %}
+autologin-user=studente
+{% else %}
+autologin-user=insegnante
+{% endif %}
+user-session=gnome-fallback
