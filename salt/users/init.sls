@@ -2,7 +2,7 @@
 
 # La password di studente e' 'studente'.
 
-{% if 'server-scuola' in salt['grains.get']('master', '') %}
+{% if 'lab' in salt['grains.get']('host', '') %}
 studente:
   user.present:
     - shell: /bin/bash
@@ -13,6 +13,15 @@ studente:
 {% endif %}
 
 # La password di amministratore e' 'amministratore'.
+{% if 'server-scuola' not in salt['grains.get']('host', '') %}
+insegnante:
+  user.present:
+    - shell: /bin/bash
+    - home: /home/insegnante
+    - createhome: True
+    - password: $6$lQPCRFm99H$xxww49VOrjb6SHXID15CF2MUB5gIRbwcFlPHqjqUm0EkD/Hw.pLWTbQNIZY.HCilB3KvfeuoU3j6FWrwBiT1r.
+    - enforce_password: True
+{% endif %}
 
 amministratore:
   user.present:
@@ -23,4 +32,6 @@ amministratore:
     - enforce_password: True
     - groups:
       - admin
+    - require:
+      - group: admin
 
