@@ -1,10 +1,16 @@
 base:
+  '*':
+    - users
+    - groups
+    - sshd
+  'pc-aula*':
+    - desktop
+    - lightdm
+    - software
   'lab*':
     - lightdm
     - software
     - ntpdate
-    - users
-    - groups
   'server-scuola*':
     - apache
     - apt-mirror
@@ -13,7 +19,4 @@ base:
     - kickstart
     - mac2hostname
     - ntpd
-    - sshd
     - tmux
-    - users
-    - groups
