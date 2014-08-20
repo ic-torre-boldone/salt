@@ -12,8 +12,7 @@ studente:
     - enforce_password: True
 {% endif %}
 
-# La password di amministratore e' 'amministratore'.
-{% if 'server-scuola' not in salt['grains.get']('host', '') %}
+{% if 'pc-aula' in salt['grains.get']('host', '') %}
 insegnante:
   user.present:
     - shell: /bin/bash
@@ -23,6 +22,7 @@ insegnante:
     - enforce_password: True
 {% endif %}
 
+# La password di amministratore e' 'amministratore'.
 amministratore:
   user.present:
     - shell: /bin/bash
