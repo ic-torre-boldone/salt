@@ -11,3 +11,4 @@ software:
   - ubuntu-edu-tertiary
   - audacity
   - geogebra-gnome
+  - flashplugin-installer
