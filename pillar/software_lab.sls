@@ -12,3 +12,8 @@ software:
   - audacity
   - geogebra-gnome
   - flashplugin-installer
+  - libreoffice-l10n-it
+  - libreoffice-help-it
+  - myspell-it
+  - hyphen-it
+  - mythes-it
