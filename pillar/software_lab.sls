@@ -17,3 +17,4 @@ software:
   - myspell-it
   - hyphen-it
   - mythes-it
+  - firefox-locale-it
